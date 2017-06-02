@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-var todos = [
-    {
-        title: 'Add first todo',
-        isDone: false
-    }
+var todos = ['Add first todo'
+    // {
+    //     title: 'Add first todo',
+    //     isDone: false
+    // }
 ];
 
 var span = document.getElementsByTagName('span');
@@ -23,8 +23,12 @@ class App extends Component {
 
     addTodo(event){
         if (event.key === 'Enter'){
-            var value = event.target.value;
-            todos.push({title: value, isDone: false});
+            let value = event.target.value;
+            let input = event.target;
+            input.value = '';
+            todos.push(value);
+        //    {title: value, isDone: false}
+            console.log(todos);
         }
 
         this.setState(function (){
@@ -32,10 +36,17 @@ class App extends Component {
                 todo: todos
             }
         });
+
+
     }
 
     deleteTodo(elem){
-        var value = elem.target.parentNode.querySelector('span').innerText;
+        let value = elem.target.parentNode.querySelector('span').innerText;
+        // for(let i = 0; i < todos.length; i++){
+        //     if (todos[i].title === value){
+        //         todos.splice(todos[i], 1)
+        //     }
+        // }
         todos.splice(todos.indexOf(value), 1);
 
         this.setState(function () {
@@ -43,6 +54,8 @@ class App extends Component {
                 todo: todos
             }
         })
+
+        console.log(todos);
     }
 
     doneTodo(){
@@ -72,7 +85,7 @@ class App extends Component {
                                   type="checkbox"
                                   onChange={this.doneTodo}
                               />
-                            <span>{todo.title}</span>
+                            <span>{todo}</span>
                             <i
                                 className="fa fa-trash-o"
                                 onClick={this.deleteTodo}

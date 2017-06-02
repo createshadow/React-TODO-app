@@ -3,6 +3,19 @@
     padding: 0;
 }
 
+li {
+    list-style: none;
+    padding: 5px 0;
+}
+
+.todoApp {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
 .fa-trash-o {
     color: red;
     cursor: pointer;
